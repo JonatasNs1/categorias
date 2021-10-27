@@ -4,7 +4,9 @@
     box-sizing: border-box;
 }
 
-
+body{
+    /* background-color: cornsilk; */
+}
 #cadastro{
     margin-left: auto;
     margin-right: auto;
@@ -29,7 +31,7 @@
     width:inherit;
     height: auto;
     min-height: 200px;
-    /* background-color: cadetblue; */
+    /* background-color: #b5b5b3; */
 }
 
 .campo{
@@ -65,7 +67,7 @@
 .enviar input{
     width:100px;
     height: 45px;
-    background-color: red;
+    background-color: #b5b5b3;
     color: white;
     margin-top: 30px;
     margin-left: 200px;
