@@ -1,6 +1,9 @@
 <?php
 
-require_once('bd/conexao.php');
+
+
+require_once(SRC.'bd/conexao.php');
+
 function listar(){
 
     $sql = "select * from  tblcategorias";
@@ -14,6 +17,19 @@ function listar(){
     // }else{
     //     echo('erro');
     // }
+
+    return $select;
+}
+
+
+function busca($idcategoria){
+   
+    $sql = "select * from tblcategorias
+    where idcategorias = ".$idcategoria;
+
+    $conexao = conexaoMysql();
+
+    $select = mysqli_query($conexao,$sql);
 
     return $select;
 }

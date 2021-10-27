@@ -1,11 +1,34 @@
 
 <?php
- require_once('configuracoes/config.php');
+//  require_once('configuracoes/config.php');
+//     require_once('bd/conexao.php');
+//     // require_once(SRC.'bd/listarCategorias.php');
+//     conexaoMysql();
+
+//     require_once('controles/exibirDadosCategorias.php');
+
+    session_start();
+
+    $nome = (string) null;
+    $id = (int) 0;
+    $modo = (string) "Salvar";
+
+
+    require_once('configuracoes/config.php');
+
     require_once('bd/conexao.php');
-    
     conexaoMysql();
 
-    require_once('controles/exibirDadosCategorias.php');
+    require_once(SRC. 'controles/exibirDadosCategorias.php');
+
+    if(isset( $_SESSION['categoria'])){
+        $id = $_SESSION['categoria']['idcategorias'];
+        $nome = $_SESSION['categoria']['nome'];
+        $modo = "Atualizar";
+
+        unset($_SESSION['categoria']);
+    }
+    // var_dump($_SESSION['categoria']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -23,21 +46,21 @@
             </div>
             <div id="cadastroInformacoes">
         
-                <form action="controles/recebeCategorias.php" name="frmCadastro" method="post" >
+                <form action="controles/recebeCategorias.php?modo=<?=$modo?>&id=<?=$id?>" name="frmCadastro" method="post" >
                    
                     <div class="campo">
                         <div class="informacoesPessoais">
                             <label> Nome: </label>
                         </div>
                         <div class="entradaDeDados">
-                            <input type="text" name="nome" value="" placeholder="Digite seu Nome" maxlength="100">
+                            <input type="text" name="nome" value="<?=$nome?>" placeholder="Digite seu Nome" maxlength="100">
                         </div>
                     </div>
                 
                     
                     <div class="enviar">
                         <div class="enviar">
-                            <input type="submit" name="btnEnviar" value="Salvar">
+                            <input type="submit" name="btnEnviar" value="<?=$modo?>">
                         </div>
                     </div>
                     
@@ -66,7 +89,8 @@
                 <tr id="tblLinhas">
                     <td class="tblColunas registros"><?=$exibirCategorias['nome']?></td>
                     <td class="tblColunas registros">
-                        <img src="img/edit.png" alt="Editar" title="Editar" class="editar">
+                        <a href="controles/editaCategorias.php?id=<?=$exibirCategorias['idcategorias']?>">
+                            <img src="img/edit.png" alt="Editar" title="Editar" class="editar">
                         <a onclick="return confirm('Tem certeza que deseja excluir?');" href="controles/deletaCategorias.php?id=<?=$exibirCategorias['idcategorias']?>"> 
                             <img src="img/trash.png" alt="Excluir" title="Excluir" class="excluir">
                         </a>

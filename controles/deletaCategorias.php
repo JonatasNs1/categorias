@@ -1,10 +1,9 @@
 <?php
 
-require_once('../bd/excluirCategorias.php');
+
 
 require_once('../configuracoes/config.php');
-
-
+require_once(SRC .'bd/excluirCategorias.php');
 
 
  

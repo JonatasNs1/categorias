@@ -1,20 +1,9 @@
 <?php
     
+
+ 
     require_once('../bd/conexao.php');
-    
 
-    // function inserir($arrayCategoria){
-
-    //     $sql = "insert into tblcategorias
-    //     (
-    //     nome,
-    //     ) 
-    //     values
-    //     (
-    //         '".$arrayCategoria['nome']."'
-           
-    //     )
-    //     ";
 
         function inserir($arrayCategoria)
         {
